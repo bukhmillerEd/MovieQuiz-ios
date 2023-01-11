@@ -48,9 +48,53 @@ final class MovieQuizViewController: UIViewController {
     @IBOutlet private var imageView: UIImageView!
     @IBOutlet private var textLabel: UILabel!
     @IBOutlet private var counterLabel: UILabel!
+    @IBOutlet weak private var yesButton: UIButton!
+    @IBOutlet weak private var noButton: UIButton!
     
     private var currentQuestionIndex = 0
     private var correctAnswers: Int = 0
+    private let questions: [QuizQuestion] = [
+        QuizQuestion(
+            image: "The Godfather",
+            text: "Рейтинг этого фильма больше чем 6?",
+            correctAnswer: true),
+        QuizQuestion(
+            image: "The Dark Knight",
+            text: "Рейтинг этого фильма больше чем 6?",
+            correctAnswer: true),
+        QuizQuestion(
+            image: "Kill Bill",
+            text: "Рейтинг этого фильма больше чем 6?",
+            correctAnswer: true),
+        QuizQuestion(
+            image: "The Avengers",
+            text: "Рейтинг этого фильма больше чем 6?",
+            correctAnswer: true),
+        QuizQuestion(
+            image: "Deadpool",
+            text: "Рейтинг этого фильма больше чем 6?",
+            correctAnswer: true),
+        QuizQuestion(
+            image: "The Green Knight",
+            text: "Рейтинг этого фильма больше чем 6?",
+            correctAnswer: true),
+        QuizQuestion(
+            image: "Old",
+            text: "Рейтинг этого фильма больше чем 6?",
+            correctAnswer: false),
+        QuizQuestion(
+            image: "The Ice Age Adventures of Buck Wild",
+            text: "Рейтинг этого фильма больше чем 6?",
+            correctAnswer: false),
+        QuizQuestion(
+            image: "Tesla",
+            text: "Рейтинг этого фильма больше чем 6?",
+            correctAnswer: false),
+        QuizQuestion(
+            image: "Vivarium",
+            text: "Рейтинг этого фильма больше чем 6?",
+            correctAnswer: false)
+    ]
     
     // MARK: - Lifecycle
     override func viewDidLoad() {
@@ -86,7 +130,7 @@ final class MovieQuizViewController: UIViewController {
         let action = UIAlertAction(title: result.buttonText, style: .default, handler: { _ in
             self.currentQuestionIndex = 0
             self.correctAnswers = 0
-            let firstQuestion = questions[self.currentQuestionIndex]
+            let firstQuestion = self.questions[self.currentQuestionIndex]
             let viewModel = self.convert(model: firstQuestion)
             self.show(quiz: viewModel)
         })
@@ -101,7 +145,6 @@ final class MovieQuizViewController: UIViewController {
     }
     
     private func showAnswerResult(isCorrect: Bool) {
-        imageView.layer.masksToBounds = true // даём разрешение на рисование рамки
         imageView.layer.borderWidth = 8
         if isCorrect {
             imageView.layer.borderColor = UIColor.greenYP?.cgColor
@@ -109,11 +152,14 @@ final class MovieQuizViewController: UIViewController {
         } else {
             imageView.layer.borderColor = UIColor.redYP?.cgColor
         }
-        imageView.layer.cornerRadius = 20
+        yesButton.isEnabled = false
+        noButton.isEnabled = false
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) { [weak self] in
             self?.imageView.layer.borderWidth = 0
             self?.showNextQuestionOrResults()
+            self?.noButton.isEnabled = true
+            self?.yesButton.isEnabled = true
         }
     }
     
