@@ -21,11 +21,11 @@ final class MovieQuizViewController: UIViewController {
     questionFactory = QuestionFactory(delegate: self)
     questionFactory?.requestNextQuestion()
   }
-          
+  
   // MARK: - Actions
   @IBAction private func yesButtonClicked(_ sender: UIButton) {
     guard let currentQuestion = currentQuestion else {
-        return
+      return
     }
     let givenAnswer = true
     showAnswerResult(isCorrect: currentQuestion.correctAnswer == givenAnswer)
@@ -33,7 +33,7 @@ final class MovieQuizViewController: UIViewController {
   
   @IBAction private func noButtonClicked(_ sender: UIButton) {
     guard let currentQuestion = currentQuestion else {
-        return
+      return
     }
     let givenAnswer = false
     showAnswerResult(isCorrect: currentQuestion.correctAnswer == givenAnswer)
@@ -47,16 +47,21 @@ final class MovieQuizViewController: UIViewController {
   }
   
   private func show(quiz result: QuizResultsViewModel) {
-    let massage = "\(result.text)\n Количество сыгранных квизов: \(statisticService.gamesCount)\n Рекорд: \(statisticService.bestGame.correct) (\(statisticService.bestGame.date.dateTimeString))\n Средняя точность: \(String(format: "%.2f", statisticService.totalAccuracy / Double(statisticService.gamesCount * questionsAmount) * 100))%"
+    let message = """
+          \(result.text)
+          Количество сыгранных квизов: \(statisticService.gamesCount)
+          Рекорд: \(statisticService.bestGame.correct) (\(statisticService.bestGame.date.dateTimeString))
+          Средняя точность: \(String(format: "%.2f", statisticService.totalAccuracy / Double(statisticService.gamesCount * questionsAmount) * 100))%
+          """
     let alertModel = AlertModel(title: result.title,
-                                message: massage,
+                                message: message,
                                 buttonText: result.buttonText) {[weak self] _ in
       guard let self = self else { return }
       self.currentQuestionIndex = 0
       self.correctAnswers = 0
       self.questionFactory?.requestNextQuestion()
     }
-    let alertPresenter = AlertPresenter(delegat: self)
+    let alertPresenter = ResultAlertPresenter(delegat: self)
     alertPresenter.showAlert(model: alertModel)
   }
   

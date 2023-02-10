@@ -1,11 +1,11 @@
 import UIKit
 
-class AlertPresenter {
+class ResultAlertPresenter {
   
-  private weak var delegat: UIViewController?
+  private weak var delegate: UIViewController?
   
   init(delegat: UIViewController?) {
-    self.delegat = delegat
+    self.delegate = delegat
   }
   
   func showAlert(model: AlertModel) {
@@ -16,7 +16,7 @@ class AlertPresenter {
                                style: .default,
                                handler: model.complition)
     alert.addAction(action)
-    delegat?.present(alert, animated: true, completion: nil)
+    delegate?.present(alert, animated: true, completion: nil)
   }
   
 }

@@ -70,29 +70,8 @@
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="2Kp-iR-wT7">
                                         <rect key="frame" x="0.0" y="759" width="390" height="60"/>
                                         <subviews>
-                                            <button autoresizesSubviews="NO" opaque="NO" clipsSubviews="YES" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="g3S-aR-z8O" userLabel="Yes Button">
-                                                <rect key="frame" x="0.0" y="0.0" width="185" height="60"/>
-                                                <color key="backgroundColor" red="0.035294117647058823" green="0.51764705882352946" blue="1" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
-                                                <state key="normal" title="Button"/>
-                                                <buttonConfiguration key="configuration" style="plain" titleAlignment="center">
-                                                    <backgroundConfiguration key="background" cornerRadius="15">
-                                                        <color key="backgroundColor" name="YP White (iOS)"/>
-                                                    </backgroundConfiguration>
-                                                    <attributedString key="attributedTitle">
-                                                        <fragment content="Да">
-                                                            <attributes>
-                                                                <font key="NSFont" size="20" name="YSDisplay-Medium"/>
-                                                            </attributes>
-                                                        </fragment>
-                                                    </attributedString>
-                                                    <color key="baseForegroundColor" name="YP Black (iOS)"/>
-                                                </buttonConfiguration>
-                                                <connections>
-                                                    <action selector="yesButtonClicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ryJ-lo-4hj"/>
-                                                </connections>
-                                            </button>
                                             <button autoresizesSubviews="NO" opaque="NO" clipsSubviews="YES" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="42K-YL-tCg" userLabel="No button">
-                                                <rect key="frame" x="205" y="0.0" width="185" height="60"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="185" height="60"/>
                                                 <color key="backgroundColor" red="0.035294117649999998" green="0.51764705879999995" blue="1" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="60" id="gzu-a9-QFk"/>
@@ -114,6 +93,27 @@
                                                 </buttonConfiguration>
                                                 <connections>
                                                     <action selector="noButtonClicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="5RP-vr-UKx"/>
+                                                </connections>
+                                            </button>
+                                            <button autoresizesSubviews="NO" opaque="NO" clipsSubviews="YES" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="g3S-aR-z8O" userLabel="Yes Button">
+                                                <rect key="frame" x="205" y="0.0" width="185" height="60"/>
+                                                <color key="backgroundColor" red="0.035294117647058823" green="0.51764705882352946" blue="1" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <state key="normal" title="Button"/>
+                                                <buttonConfiguration key="configuration" style="plain" titleAlignment="center">
+                                                    <backgroundConfiguration key="background" cornerRadius="15">
+                                                        <color key="backgroundColor" name="YP White (iOS)"/>
+                                                    </backgroundConfiguration>
+                                                    <attributedString key="attributedTitle">
+                                                        <fragment content="Да">
+                                                            <attributes>
+                                                                <font key="NSFont" size="20" name="YSDisplay-Medium"/>
+                                                            </attributes>
+                                                        </fragment>
+                                                    </attributedString>
+                                                    <color key="baseForegroundColor" name="YP Black (iOS)"/>
+                                                </buttonConfiguration>
+                                                <connections>
+                                                    <action selector="yesButtonClicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ryJ-lo-4hj"/>
                                                 </connections>
                                             </button>
                                         </subviews>
