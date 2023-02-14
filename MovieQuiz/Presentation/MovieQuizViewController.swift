@@ -57,7 +57,7 @@ final class MovieQuizViewController: UIViewController {
                                 message: message,
                                 buttonText: result.buttonText) {[weak self] _ in
       guard let self = self else { return }
-      self.currentQuestionIndex = 0
+      self.currentQuestionIndex = 1
       self.correctAnswers = 0
       self.questionFactory?.requestNextQuestion()
     }

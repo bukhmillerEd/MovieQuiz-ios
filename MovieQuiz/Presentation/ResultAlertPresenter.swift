@@ -1,6 +1,6 @@
 import UIKit
 
-class ResultAlertPresenter {
+final class ResultAlertPresenter {
   
   private weak var delegate: UIViewController?
   
