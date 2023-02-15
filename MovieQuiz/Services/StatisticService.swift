@@ -11,7 +11,6 @@ protocol StatisticService {
 
 final class StatisticServiceImplementation: StatisticService {
   private let userDefaults = UserDefaults.standard
-  
   var totalAccuracy: Double {
     get {
       let total = userDefaults.double(forKey: Keys.total.rawValue)
