@@ -1,12 +1,22 @@
 import UIKit
 
+protocol MovieQuizViewControllerProtocol: AnyObject {
+    func show(quiz step: QuizStepViewModel)
+    func show(quiz result: QuizResultsViewModel)
+    func highlightImageBorder(isCorrectAnswer: Bool)
+    func controlLoadingIndicator(activate: Bool)
+    func showNetworkError(message: String)
+    func controlEnableButtons(enable: Bool)
+    func dehighlightImageBorder()
+}
+
 final class MovieQuizViewController: UIViewController, MovieQuizViewControllerProtocol {
     
     @IBOutlet private var imageView: UIImageView!
     @IBOutlet private var textLabel: UILabel!
     @IBOutlet private var counterLabel: UILabel!
     @IBOutlet weak private var yesButton: UIButton!
-    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+    @IBOutlet private weak var activityIndicator: UIActivityIndicatorView!
     @IBOutlet weak private var noButton: UIButton!
     
     private var alertPresenter: ResultAlertPresenter?
@@ -83,14 +93,4 @@ final class MovieQuizViewController: UIViewController, MovieQuizViewControllerPr
         alertPresenter?.showAlert(model: model)
     }
     
-}
-
-protocol MovieQuizViewControllerProtocol: AnyObject {
-    func show(quiz step: QuizStepViewModel)
-    func show(quiz result: QuizResultsViewModel)
-    func highlightImageBorder(isCorrectAnswer: Bool)
-    func controlLoadingIndicator(activate: Bool)
-    func showNetworkError(message: String)
-    func controlEnableButtons(enable: Bool)
-    func dehighlightImageBorder()
 }

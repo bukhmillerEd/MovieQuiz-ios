@@ -6,13 +6,7 @@ protocol MoviesLoading {
 }
 
 struct MoviesLoader: MoviesLoading {
-    private enum itemsURL: String {
-        case baseURL = "https://imdb-api.com"
-        case lang = "en"
-        case top250 = "Top250Movies"
-        case key = "k_2k4aj3em"
-    }
-    
+
     // MARK: - NetworkClient
     private let networkClient: NetworkRouting
     
@@ -22,7 +16,7 @@ struct MoviesLoader: MoviesLoading {
     
     // MARK: - URL
     private var mostPopularMoviesUrl: URL {
-        guard let url = URL(string: "\(itemsURL.baseURL.rawValue)/\(itemsURL.lang.rawValue)/API/\(itemsURL.top250.rawValue)/\(itemsURL.key.rawValue)") else {
+        guard let url = URL(string: "https://imdb-api.com/en/API/Top250Movies/k_2k4aj3em") else {
             preconditionFailure("Unable to construct mostPopularMoviesUrl")
         }
         return url
